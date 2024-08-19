@@ -1,5 +1,6 @@
 package com.eventostec.api.config;
 
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
@@ -18,6 +19,7 @@ public class AWSConfig {
     public AmazonS3 createS3Instace(){
         return AmazonS3ClientBuilder
                 .standard()
+                .withCredentials(new DefaultAWSCredentialsProviderChain())
                 .withRegion(awsRegion)
                 .build();
     }
